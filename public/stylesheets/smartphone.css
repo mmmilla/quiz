@@ -5,3 +5,5 @@ body	{ font-size: xx-large; }
 input, button	{ font-size: x-large; }
 footer	{ font-size: large;}
 a { color: #00B7FF; text-decoration: none }
+img { height:60px; width:60px; padding: 10px 0px 0px 0px;}
+

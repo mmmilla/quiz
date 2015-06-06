@@ -7,3 +7,6 @@ exports.answer = function(req,res) {
     else
 	res.render('quizes/answer', {respuesta: 'Incorrecto'});
 };
+exports.author = function(req,res) {
+	res.render('quizes/author', {autor: 'Manuel J. Molino'});
+};
