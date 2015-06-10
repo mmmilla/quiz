@@ -26,9 +26,17 @@ exports.load = function(req, res, next, quizId) {
 };
 
 // GET /quizes
-// GET /users/:userId/quizes
+//exports.index = function(req, res) {  
+//  models.Quiz.findAll().then(
+//    function(quizes) {
+//      res.render('quizes/index', {quizes: quizes});
+//    }
+//  ).catch(function(error){next(error)});
+//};
 exports.index = function(req, res) {  
-  models.Quiz.findAll().then(
+  var search = req.query.search;
+  var condicion = '%'+search+'%';
+  models.Quiz.findAll({where: ["pregunta like ?", condicion]}).then(
     function(quizes) {
       res.render('quizes/index', {quizes: quizes});
     }
@@ -37,7 +45,7 @@ exports.index = function(req, res) {
 
 // GET /quizes/:id
 exports.show = function(req, res) {
-  res.render('quizes/show', { quiz: quiz});
+  res.render('quizes/show', { quiz: req.quiz});
 };            // req.quiz: instancia de quiz cargada con autoload
 
 // GET /quizes/:id/answer
