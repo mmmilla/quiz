@@ -35,8 +35,9 @@ exports.load = function(req, res, next, quizId) {
 //};
 exports.index = function(req, res) {
   if (req.query.tema){
-     var tema = "%"+req.query.tema+"%"; 	 
-     models.Quiz.findAll({where: ["tematica like ?", tema]}).then(
+     var tema = req.query.tema; 	 
+     //models.Quiz.findAll({where: ["tematica like ?", tema]}).then(
+     models.Quiz.findAll({where: [{tematica: tema}]}).then(
         function(quizes) {
           res.render('quizes/index', {quizes: quizes});
         }

@@ -44,15 +44,15 @@ sequelize.sync().then(function() {
    Quiz.count().then(function (count) {
 	if (count===0) { //inicializamos si la tabla está vacía
 	    Quiz.bulkCreate( 
-	        [ {pregunta: 'Capital de Italia',   respuesta: 'Roma', tematica: 'Historia' },
-	          {pregunta: 'Capital de Portugal', respuesta: 'Lisboa', tematica: 'Historia'  },
-	         {pregunta: 'Autor del Quijote',   respuesta: 'Cervantes', tematica: 'Humanidades' },
-	         {pregunta: 'Presentador del Hormiguero',   respuesta: 'Motos', tematica: 'Ocio' },
+	        [ {pregunta: 'Capital de Italia',   respuesta: 'Roma', tematica: 'historia' },
+	          {pregunta: 'Capital de Portugal', respuesta: 'Lisboa', tematica: 'historia'  },
+	         {pregunta: 'Autor del Quijote',   respuesta: 'Cervantes', tematica: 'humanidades' },
+	         {pregunta: 'Presentador del Hormiguero',   respuesta: 'Motos', tematica: 'ocio' },
 	         {pregunta: 'Descubridor de la penicilina',   respuesta: 'Fleming', tematica: 'Ciencia' },
-	         {pregunta: 'Lenguaje usado en Node',   respuesta: 'Javascript', tematica: 'Tecnologia' },
-	         {pregunta: 'Autor del Lazarillo',   respuesta: 'Anónimo', tematica: 'Humanidades' },
-	         {pregunta: 'Creador de la máquina de vapor',   respuesta: 'Watt', tematica: 'Tecnologia' },
-	         {pregunta: 'Descubridor de la dinamita',   respuesta: 'Nobel', tematica: 'Ciencia' } ]
+	         {pregunta: 'Lenguaje usado en Node',   respuesta: 'Javascript', tematica: 'tecnologia' },
+	         {pregunta: 'Autor del Lazarillo',   respuesta: 'Anónimo', tematica: 'humanidades' },
+	         {pregunta: 'Creador de la máquina de vapor',   respuesta: 'Watt', tematica: 'tecnologia' },
+	         {pregunta: 'Descubridor de la dinamita',   respuesta: 'Nobel', tematica: 'ciencia' } ]
       ).then(function(){console.log('Base de datos inicializada')});
      };
    });
