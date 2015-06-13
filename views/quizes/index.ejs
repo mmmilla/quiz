@@ -1,9 +1,27 @@
+
+<div id='section1'>
 <table>
   <% var i; for (i=0; i < quizes.length; i++) { %>        
      <tr><td><a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td></tr> 
   <% } %>
   </table>
+</div>
+<div id='section2'>
 <form action="/quizes" method="get">
     Pregunta a buscar: <input type="text" name="search"><br>
     <input type="submit" value="Buscar">
 </form>
+</div>
+<div id='section3'>
+<form action="/quizes" method="get">
+ <p> Índice temático de las preguntas </p>
+ <select name="tema">
+  <option value="humanidades">Humanidades</option>
+  <option value="ocio">Ocio</option>
+  <option value="ciencia">Ciencia</option>
+  <option value="tecnologia">Tecnología</option>
+</select>
+   <br>
+    <input type="submit" value="Buscar">
+</form>
+</div>

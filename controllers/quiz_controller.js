@@ -34,7 +34,14 @@ exports.load = function(req, res, next, quizId) {
 //  ).catch(function(error){next(error)});
 //};
 exports.index = function(req, res) {
-  if (req.query.search){ 
+  if (req.query.tema){
+     var tema = req.query.tema; 	 
+     models.Quiz.findAll({where: ["tematica like ?", tema]}).then(
+        function(quizes) {
+          res.render('quizes/index', {quizes: quizes});
+        }
+     ).catch(function(error){next(error)});
+  }else if (req.query.search){ 
      var search = req.query.search;
      var condicion = '%'+search+'%';
      models.Quiz.findAll({where: ["pregunta like ?", condicion]}).then(
