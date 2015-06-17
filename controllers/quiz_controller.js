@@ -35,7 +35,7 @@ exports.load = function(req, res, next, quizId) {
 //};
 exports.index = function(req, res) {
   if (req.query.tema){
-     var tema = req.query.tema; 	 
+     var tema = req.query.tema; 
      //models.Quiz.findAll({where: ["tematica like ?", tema]}).then(
      models.Quiz.findAll({where: [{tematica: tema}]}).then(
         function(quizes) {
@@ -71,4 +71,23 @@ exports.answer = function(req, res) {
     resultado = 'Correcto';
   }
   res.render('quizes/answer', { quiz: req.quiz, respuesta: resultado});
+};
+
+// GET /quizes/new
+
+exports.new = function(req, res) {
+  var quiz = models.Quiz.build( // crea objeto quiz 
+    {pregunta: "Pregunta", respuesta: "Respuesta", tematica: "Tematica"}
+  );
+
+  res.render('quizes/new', {quiz: quiz});
+};
+
+// POST /quizes/create
+
+exports.create = function(req, res) {
+   var quiz = models.Quiz.buid( req.body.quiz );
+   quiz.save({fields: ["pregunta","respuesta"]}).then(function(){
+	res.redirect('/quizes');
+   })
 };

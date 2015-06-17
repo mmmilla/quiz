@@ -1,2 +1,6 @@
 <h3>Bienvenido a <%= title %></h3>
 El portal donde podrá crear sus propios juegos!
+<%if(session.user){%>
+<p>Logueado como <%=session.user.username %></p>
+<p>Su sesión se cerrará tras dos minutos de inactividad</p>
+<%}%>
