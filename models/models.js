@@ -37,7 +37,17 @@ var sequelize = new Sequelize(DB_name, user, pwd,
 var quiz_path = path.join(__dirname,'quiz');
 var Quiz = sequelize.import(quiz_path);
 
+
+// Importar definicion de la tabla Comment
+var comment_path = path.join(__dirname,'comment');
+var Comment = sequelize.import(comment_path);
+
+Comment.belongsTo(Quiz);
+Quiz.hasMany(Comment);
+//Quiz.hasMany(Comment, { foreignKey: 'id'});
+
 exports.Quiz = Quiz; //exporta definición de tabla Quiz
+exports.Comment = Comment; 
 
 //inicializamos la tabla con una pregunta y su respuesta
 
@@ -58,4 +68,14 @@ sequelize.sync().then(function() {
      };
    });
  });
-
+//var datos=1;
+//sequelize.query("select count(distinct QuizId) from Comments").then(function(cuenta) {
+//datos.getNumeroconComentarios = function(callback){
+//	sequelize.query("select count(distinct QuizId) as n from Comments").then(function(cuenta) {
+//	var data=cuenta[0].n;
+//        console.log('datos: '+data);
+//	callback(null, data);
+//	}); 
+        
+//};
+//exports.datos=datos;

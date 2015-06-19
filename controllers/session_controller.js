@@ -1,3 +1,11 @@
+exports.loginRequired = function(req, res, next){
+    if (req.session.user){
+	next();
+    } else {
+	res.redirect('/login');
+    }
+};
+
 exports.new = function(req, res) {
     var errors = req.session.errors || {};
     req.session.errors = {};
@@ -26,3 +34,10 @@ exports.destroy = function(req, res) {
     res.redirect(req.session.redir.toString());
 };
   
+exports.loginRequired = function(req, res, next){
+    if (req.session.user) {
+        next();
+    } else {
+        res.redirect('/login');
+    }
+};
